@@ -70,7 +70,6 @@ public class Score extends GameObject
     @Override
     public void draw(float[] mvpMatrix)
     {
-        mNumberSprite.draw(mvpMatrix);
 
 
     }

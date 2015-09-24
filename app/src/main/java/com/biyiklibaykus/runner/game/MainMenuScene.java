@@ -18,6 +18,8 @@ public class MainMenuScene extends Scene
 {
 
     private TextureButton mButtonCenter;
+    private TextureButton mHighScore;
+    private Score mScore;
 
     public MainMenuScene(GameEngine engine)
     {
@@ -29,8 +31,22 @@ public class MainMenuScene extends Scene
     {
         super.initialize();
 
-        mButtonCenter = new TextureButton(getScreenWidth()/2,getScreenHeight()/2,300,300,R.drawable.play_button);
+        float unit = getScreenWidth() / 60;
+
+
+        float centerX = getScreenWidth() / 2;
+        float centerY = getScreenHeight() / 2 - unit*2;
+
+
+        mHighScore = new TextureButton(centerX,centerY + unit * 10,unit*20,unit*5,R.drawable.highscore);
+        mScore = new Score(centerX,centerY + unit * 5, unit*5);
+        mButtonCenter = new TextureButton(centerX,centerY - unit*6,unit * 15,unit * 5,R.drawable.play);
+
+
+        mScore.setScore(UserDataManager.get().getScore());
         addGameObject(mButtonCenter);
+        addGameObject(mScore);
+        addGameObject(mHighScore);
 
     }
 
