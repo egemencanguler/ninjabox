@@ -64,6 +64,7 @@ public class TextureShaderProgram
         // Bind the texture to this unit.
         GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, textureId);
 
+
         // Tell the texture uniform sampler to use this texture in the shader by
         // telling it to read from texture unit 0.
         GLES20.glUniform1i(uTextureUnit, 0);

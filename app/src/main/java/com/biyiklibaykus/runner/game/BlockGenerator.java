@@ -14,13 +14,11 @@ import java.util.Random;
  */
 public class BlockGenerator
 {
+    private Score mScore;
     private Runner mRunner;
     private Dimensions mDimensions;
     private Scene mScene;
     private Random mRandom;
-
-
-
 
     private float timer = 0;
 
@@ -48,6 +46,9 @@ public class BlockGenerator
         mRunner = runner;
         mScene = scene;
         mRandom = new Random();
+        mScore = new Score(dimensions);
+        mScene.addGameObject(mScore);
+        mScore.setScore(0);
 
         generateBlockPos();
 
@@ -176,7 +177,10 @@ public class BlockGenerator
     private int mLevel = 0;
     public void levelUp()
     {
+
         mLevel ++;
+        mScore.setScore(mLevel);
+
         if(mLevel < 10)
         {
             mInterval -= 0.1f;
@@ -204,21 +208,7 @@ public class BlockGenerator
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public int getLevel() {
+        return mLevel;
+    }
 }

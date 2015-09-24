@@ -77,6 +77,7 @@ public class Block extends GameObject
         if(mRunner.isCollide(mBoxCollider))
         {
             mRectangular.setColor(1,0,0);
+            ((RunnerScene)getScene()).gameOver();
         }
     }
 

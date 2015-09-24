@@ -42,6 +42,8 @@ public class RunnerScene extends Scene
         mRunner = new Runner(getScreenWidth() / 2, getScreenHeight() / 2, dimensions);
         addGameObject(mRunner);
 
+
+
         mBlockGenerator = new BlockGenerator(dimensions,mRunner,this);
         mCoinGenerator = new CoinGenerator(this,mRunner,dimensions,mBlockGenerator);
 
@@ -80,6 +82,12 @@ public class RunnerScene extends Scene
 
 
         return false;
+    }
+
+    public void gameOver()
+    {
+        getGameEngine().setScene(new GameOverScene(getGameEngine(),mBlockGenerator.getLevel()));
+
     }
 
 

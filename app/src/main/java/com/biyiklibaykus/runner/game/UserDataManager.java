@@ -3,62 +3,31 @@ package com.biyiklibaykus.runner.game;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.biyiklibaykus.soron.Util;
-import com.biyiklibaykus.soron.game.db.QuestionDB;
+import com.biyiklibaykus.runner.Util;
 
 
-public class UserManager
+public class UserDataManager
 {
-    private static UserManager sUserManager;
+    private static UserDataManager sUserManager;
 
-    private static final String PREF_NAME = "gamemanager";
-    private static final String DB_VERSION = "dbversion";
-    private static final String NEW_VERSION_AVAILABLE = "versioncontrol";
-
-
+    private static final String PREF_NAME = "usermanager";
     private static final String SCORE = "score";
-    private static final String WIN_NUMBER = "winnumber";
 
-    private static final String SOUNDON = "soundon";
-
-
-
-    public static UserManager get()
+    public static UserDataManager get()
     {
         if(sUserManager == null)
         {
-            sUserManager = new UserManager(Util.get().getAppContext());
+            sUserManager = new UserDataManager(Util.getAppContext());
         }
         return sUserManager;
     }
 
-
-
     //CLASS
-
-    private Context mContext;
     private SharedPreferences mSharedPreferences;
-    private QuestionDB mQuestionDB;
 
-    public UserManager(Context appContext)
+    public UserDataManager(Context appContext)
     {
-        mContext = appContext;
         mSharedPreferences = appContext.getSharedPreferences(PREF_NAME,Context.MODE_PRIVATE);
-        mQuestionDB = new QuestionDB(appContext);
-
-    }
-
-
-    public int getDBVersion()
-    {
-        int version = mSharedPreferences.getInt(DB_VERSION, -1);
-        return version;
-    }
-    public void setDBVersion(int version)
-    {
-        SharedPreferences.Editor editor = mSharedPreferences.edit();
-        editor.putInt(DB_VERSION,version);
-        editor.apply();
     }
 
 
@@ -75,48 +44,7 @@ public class UserManager
         editor.apply();
     }
 
-    public int getWinNumber()
-    {
-        int winNumber = mSharedPreferences.getInt(WIN_NUMBER,0);
-        return winNumber;
-    }
 
-    public void setWinNumber(int number)
-    {
-        SharedPreferences.Editor editor = mSharedPreferences.edit();
-        editor.putInt(WIN_NUMBER,number);
-        editor.apply();
-
-    }
-
-    public boolean getSoundOn()
-    {
-        return  mSharedPreferences.getBoolean(SOUNDON,true);
-
-    }
-
-    public void setSoundOn(boolean soundOn)
-    {
-        SharedPreferences.Editor editor = mSharedPreferences.edit();
-        editor.putBoolean(SOUNDON, soundOn);
-        editor.apply();
-
-    }
-
-
-    public boolean getNewVersionAvailable()
-    {
-        return  mSharedPreferences.getBoolean(NEW_VERSION_AVAILABLE,true);
-
-    }
-
-    public void setNewVersionAvailable(boolean soundOn)
-    {
-        SharedPreferences.Editor editor = mSharedPreferences.edit();
-        editor.putBoolean(NEW_VERSION_AVAILABLE, soundOn);
-        editor.apply();
-
-    }
 
 
 
