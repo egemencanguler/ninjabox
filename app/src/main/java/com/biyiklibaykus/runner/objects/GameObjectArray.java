@@ -12,6 +12,8 @@ import java.util.List;
  */
 public class GameObjectArray
 {
+    //TODO get rid of this complicated add remove implementation.
+    // implement a simple find remove and find add algorithm
     private int SIZE = 1000;
 
     private GameObject[] mCurrentObjects = new GameObject[SIZE];

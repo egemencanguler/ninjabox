@@ -10,6 +10,7 @@ import com.biyiklibaykus.runner.engine.GameEngine;
 import com.biyiklibaykus.runner.engine.Scene;
 import com.biyiklibaykus.runner.objects.GameObject;
 import com.biyiklibaykus.runner.objects.TextureButton;
+import com.biyiklibaykus.runner.shape.Rectangular;
 
 /**
  * Created by egemen on 19.09.2015.
@@ -30,12 +31,13 @@ public class MainMenuScene extends Scene
     public void initialize()
     {
         super.initialize();
-
-        float unit = getScreenWidth() / 60;
-
-
-        float centerX = getScreenWidth() / 2;
-        float centerY = getScreenHeight() / 2 - unit*2;
+//
+//        float unit = getScreenWidth() / 60;
+//
+//
+        float unit = 800/60;
+        float centerX = 800 / 2;
+        float centerY = 600 / 2 - 2*unit;
 
 
         mHighScore = new TextureButton(centerX,centerY + unit * 10,unit*20,unit*5,R.drawable.highscore);
@@ -44,6 +46,9 @@ public class MainMenuScene extends Scene
 
 
         mScore.setScore(UserDataManager.get().getScore());
+
+
+
         addGameObject(mButtonCenter);
         addGameObject(mScore);
         addGameObject(mHighScore);

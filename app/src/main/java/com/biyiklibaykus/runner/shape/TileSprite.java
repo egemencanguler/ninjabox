@@ -56,7 +56,7 @@ public class TileSprite
         float tileStartY = th * rowPos;
         float tileEndY = tileStartY + th;
 
-        Util.log("Tile vetex: " + tileStartX + " " + tileStartY + " " + tileEndX + " " + tileEndY);
+       // Util.log("Tile vetex: " + tileStartX + " " + tileStartY + " " + tileEndX + " " + tileEndY);
         float vertexCoords[] =
                 {
                         -sh, sh, tileStartX, tileStartY, // top left

@@ -58,7 +58,12 @@ public abstract class Scene
         mGameObjectArray.handleAdd();
         for(int i = 0; i < mGameObjectArray.size(); i ++)
         {
+            GameObject o = mGameObjectArray.get(i);
+            o.mTransform.prevPos.x = o.mTransform.pos.x;
+            o.mTransform.prevPos.y = o.mTransform.pos.y;
             mGameObjectArray.get(i).update(delta);
+            //TODO remove
+
         }
 
 
@@ -75,15 +80,17 @@ public abstract class Scene
         }
     }
 
-    public float getScreenWidth()
+    public float getCameraWidth()
     {
-        return mGameEngine.getScreenWidth();
+        return mMVPMatrix.getCamWidth();
     }
 
-    public float getScreenHeight()
+    public float getCameraHeight()
     {
-        return mGameEngine.getScreenHeight();
+        return mMVPMatrix.getCamHeight();
     }
+
+
 
 
     public void setCamPosX(float x)

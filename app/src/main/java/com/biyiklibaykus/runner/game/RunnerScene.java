@@ -6,6 +6,7 @@ import com.biyiklibaykus.runner.R;
 import com.biyiklibaykus.runner.Util;
 import com.biyiklibaykus.runner.components.Vector2;
 import com.biyiklibaykus.runner.data.MVPMatrix;
+import com.biyiklibaykus.runner.engine.EngineConstants;
 import com.biyiklibaykus.runner.engine.GameEngine;
 import com.biyiklibaykus.runner.engine.Scene;
 import com.biyiklibaykus.runner.programs.TextureShaderProgram;
@@ -34,13 +35,19 @@ public class RunnerScene extends Scene
     public void initialize() {
         super.initialize();
 
-        Dimensions dimensions = new Dimensions(getScreenWidth(),getScreenHeight());
+        Dimensions dimensions = new Dimensions(EngineConstants.SceneWidth,EngineConstants.SceneHeight);
+
+
+
+        mRunner = new Runner(EngineConstants.SceneWidth / 2, EngineConstants.SceneHeight / 2, dimensions);
+//        mRunner.setLayer(20);
+        addGameObject(mRunner);
 
         mBackground = new Background(dimensions);
+        mBackground.setLayer(10);
         addGameObject(mBackground);
 
-        mRunner = new Runner(getScreenWidth() / 2, getScreenHeight() / 2, dimensions);
-        addGameObject(mRunner);
+
 
 
 
@@ -48,11 +55,12 @@ public class RunnerScene extends Scene
         mCoinGenerator = new CoinGenerator(this,mRunner,dimensions,mBlockGenerator);
 
         camPos = getCameraPos();
-        camPos.x = getScreenWidth() / 2;
-        camPos.y = getScreenHeight() / 2;
+        camPos.x = EngineConstants.SceneWidth / 2;
+        camPos.y = EngineConstants.SceneHeight / 2;
 
         Directions.setGravityDir(Directions.DIR_DOWN);
         Util.log("INIT");
+
 
 
 
@@ -71,7 +79,7 @@ public class RunnerScene extends Scene
     boolean mControl = true;
     public boolean onTouchDown(float x, float y)
     {
-        if(x < getScreenWidth() / 2)
+        if(x < EngineConstants.SceneWidth / 2)
         {
             mRunner.jump();
         }else
@@ -86,7 +94,8 @@ public class RunnerScene extends Scene
 
     public void gameOver()
     {
-        getGameEngine().setScene(new GameOverScene(getGameEngine(),mBlockGenerator.getLevel()));
+        //TODO reactivate game over
+        //getGameEngine().setScene(new GameOverScene(getGameEngine(),mBlockGenerator.getLevel()));
 
     }
 

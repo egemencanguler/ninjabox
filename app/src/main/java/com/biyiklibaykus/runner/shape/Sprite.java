@@ -54,6 +54,7 @@ public class Sprite
 
     public void draw(float[] mvpMatrix)
     {
+
         // Add program to OpenGL ES environment
         mProgram.use();
 

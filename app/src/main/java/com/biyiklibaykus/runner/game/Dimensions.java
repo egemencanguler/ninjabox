@@ -5,8 +5,8 @@ package com.biyiklibaykus.runner.game;
  */
 public class Dimensions
 {
-    public static final float ASPECT_RATIO = 4/3;
-    public static int VERTICAL_GRID_NUMBER = 30;
+//    public static final float ASPECT_RATIO = 4/3;
+   // public static int VERTICAL_GRID_NUMBER = 30;
     private static final float JUMP_TIME = 0.5f;
 
 
@@ -45,11 +45,11 @@ public class Dimensions
         mScreenWidth = screenWidth;
         mScreenHeight = screenHeight;
 
-        mReferenceSquareWidth = mScreenHeight / VERTICAL_GRID_NUMBER;
+        mReferenceSquareWidth = 20;//mScreenHeight / VERTICAL_GRID_NUMBER;
 
         //AREA BASIS
         mAreaHeight = mScreenHeight - 2 * mReferenceSquareWidth;
-        mAreaWidth = mScreenHeight * ASPECT_RATIO - 2 * mReferenceSquareWidth;
+        mAreaWidth = mScreenWidth - 2 * mReferenceSquareWidth;
 
         mAreaCenterX = mScreenWidth / 2;
         mAreaCenterY = mScreenHeight / 2;
@@ -70,6 +70,8 @@ public class Dimensions
         mGravity = mRunnerJumpSpeed / JUMP_TIME;
 
         mRunnerSpeed = mAreaHeight / 5f;
+        mRunnerSpeed *= 2;
+
 
 
 

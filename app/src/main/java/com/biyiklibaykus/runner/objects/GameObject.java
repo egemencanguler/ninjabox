@@ -9,6 +9,7 @@ import com.biyiklibaykus.runner.engine.Scene;
  */
 public abstract class GameObject
 {
+
     private Scene mScene;
 
     public Transform mTransform;
@@ -36,6 +37,10 @@ public abstract class GameObject
     {
         mTransform.pos.x = x;
         mTransform.pos.y = y;
+    }
+    public void setLayer(int l)
+    {
+        mTransform.layer = l;
     }
 
     public void setScene(Scene scene) {

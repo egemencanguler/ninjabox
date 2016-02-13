@@ -3,11 +3,14 @@ package com.biyiklibaykus.runner.engine;
 import android.content.Context;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
+import android.opengl.Matrix;
 import android.os.SystemClock;
 
 
 import com.biyiklibaykus.runner.Util;
+import com.biyiklibaykus.runner.data.MVPMatrix;
 import com.biyiklibaykus.runner.engine.GameEngine;
+import com.biyiklibaykus.runner.shape.Rectangular;
 import com.biyiklibaykus.runner.shape.Triangle;
 
 import javax.microedition.khronos.egl.EGLConfig;
@@ -53,19 +56,15 @@ public class GameRenderer implements GLSurfaceView.Renderer
     {
         // Set the OpenGL viewport to fill the entire surface.
         glViewport(0, 0, width, height);
-        mGameEngine.initialize(width, height);
-//        if(!engineStart)
-//        {
-//            mGameEngine.initialize(width, height);
-//            engineStart = true;
-//        }
+//        mGameEngine.initialize(width, height);
+        if(!engineStart)
+        {
+            mGameEngine.initialize(width, height);
+            engineStart = true;
+        }
 
 
     }
-
-
-
-
 
 
 
@@ -73,12 +72,16 @@ public class GameRenderer implements GLSurfaceView.Renderer
     public void onDrawFrame(GL10 gl)
     {
         // Clear the rendering surface.
-        glClear(GL_COLOR_BUFFER_BIT);
-        glClearColor(1.0f,1.0f,1.0f,1.0f);
-        glBlendFunc(GLES20.GL_SRC_ALPHA, GLES20.GL_ONE_MINUS_SRC_ALPHA);
-        glEnable(GLES20.GL_BLEND);
+        glClear(GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
+//        glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
-//        glEnable(GL_BLEND);
+        glEnable(GLES20.GL_BLEND);
+        glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+
+
+        glEnable(GL_BLEND);
+        glEnable(GL_DEPTH_TEST);
+
 
         mGameLoop.loop();
 

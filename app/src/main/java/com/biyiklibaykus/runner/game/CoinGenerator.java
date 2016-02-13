@@ -30,7 +30,7 @@ public class CoinGenerator implements Coin.Callback
         mRunner = runner;
         mDimensions = dimensions;
         mCoin = new Coin(mRunner,this
-                ,scene.getScreenWidth()/2,scene.getScreenHeight()/2
+                ,scene.getCameraWidth()/2,scene.getCameraHeight()/2
                 ,mDimensions.getReferenceSquareWidth()
         ,mDimensions.getReferenceSquareWidth());
 
@@ -40,15 +40,17 @@ public class CoinGenerator implements Coin.Callback
         int column = mDimensions.getColumnNumber();
         float size = mDimensions.getReferenceSquareWidth();
         int length = row * column;
+        Util.log("Length:" + length);
         mCoinPos = new Vector2[length];
 
-        for(int i = 0; i < row; i ++)
+        int a = 0;
+        for(int i = 0; i < column; i ++)
         {
-            for(int j = 0; j < column; j++)
+            for(int j = 0; j < row; j++)
             {
                 float x = mDimensions.getAreaBoundLeftX() + size/2 + size * i;
                 float y = mDimensions.getAreaBoundDownY() + size/2 + size * j;
-                mCoinPos[i * row + j] = new Vector2(x,y);
+                mCoinPos[a++] = new Vector2(x,y);
             }
         }
 
@@ -73,6 +75,8 @@ public class CoinGenerator implements Coin.Callback
     private Random mRandom = new Random();
     private Vector2 randomPos()
     {
-        return mCoinPos[mRandom.nextInt(mCoinPos.length)];
+        int i = mRandom.nextInt(mCoinPos.length);
+        Util.log("Random i: " + i + ", " + mCoinPos[i].x +", " + mCoinPos[i].y);
+        return mCoinPos[i];
     }
 }

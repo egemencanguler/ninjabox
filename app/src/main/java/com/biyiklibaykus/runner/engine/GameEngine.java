@@ -55,11 +55,15 @@ public class GameEngine
 
     public void update(float deltaTime)
     {
-
+        //TODO this is definitly not supposed to be like this.
+        //remove while. even consider removing event handler
         while(!mEventHandler.empty())
         {
             MotionEvent event = mEventHandler.poll();
-            mCurrentScene.onTouchDown(event.getX(), getScreenHeight() - event.getY());
+            float x = mMVPMatrix.screenToCameraX(event.getX());
+            float y = mMVPMatrix.screenToCameraY(event.getY());
+
+            mCurrentScene.onTouchDown(x, y);
         }
         mCurrentScene.update(deltaTime);
     }

@@ -1,5 +1,6 @@
 package com.biyiklibaykus.runner.objects;
 
+import com.biyiklibaykus.runner.Util;
 import com.biyiklibaykus.runner.components.Vector2;
 import com.biyiklibaykus.runner.shape.Rectangular;
 import com.biyiklibaykus.runner.shape.Sprite;
@@ -41,6 +42,8 @@ public class TextureButton extends GameObject
 
     public boolean contain(float x, float y)
     {
+        Util.log("pos: " + getPos().x + ", " + getPos().y);
+        Util.log("touch: " +x + ", " + y);
         Vector2 pos = getPos();
         float height = mSprite.getHeight();
         float width = mSprite.getWidth();

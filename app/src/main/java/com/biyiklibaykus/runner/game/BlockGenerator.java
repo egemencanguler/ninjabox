@@ -14,6 +14,8 @@ import java.util.Random;
  */
 public class BlockGenerator
 {
+
+
     private Score mScore;
     private Runner mRunner;
     private Dimensions mDimensions;
@@ -31,12 +33,12 @@ public class BlockGenerator
     private float mGap;
     private int mMaxBlockSize;
     private float mInterval;
-
-
-    private Vector2 mDirUp = new Vector2(0,1);
-    private Vector2 mDirDown = new Vector2(0,-1);
-    private Vector2 mDirLeft = new Vector2(-1,0);
-    private Vector2 mDirRight = new Vector2(1,0);
+//
+//
+//    private Vector2 mDirUp = new Vector2(0,1);
+//    private Vector2 mDirDown = new Vector2(0,-1);
+//    private Vector2 mDirLeft = new Vector2(-1,0);
+//    private Vector2 mDirRight = new Vector2(1,0);
 
 
 
@@ -104,6 +106,7 @@ public class BlockGenerator
 
     public void generateBlock(float delta)
     {
+
         timer += delta;
         if(timer >= mInterval)
         {

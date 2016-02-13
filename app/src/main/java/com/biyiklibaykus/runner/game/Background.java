@@ -32,7 +32,10 @@ public class Background extends GameObject
     }
 
     @Override
-    public void draw(float[] mvpMatrix) {
+    public void draw(float[] mvpMatrix)
+    {
+
+
         mRectangular.draw(mvpMatrix);
     }
 

@@ -284,8 +284,11 @@ public class Runner extends GameObject
 
     }
 
+
+
     public void jump()
     {
+
         mJumpParticleEffect.reset();
         mJumpSpeed = mJump;
         mGround = false;
