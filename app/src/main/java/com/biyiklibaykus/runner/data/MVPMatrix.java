@@ -8,6 +8,7 @@ import android.util.Log;
 import com.biyiklibaykus.runner.Util;
 import com.biyiklibaykus.runner.components.Transform;
 import com.biyiklibaykus.runner.components.Vector2;
+import com.biyiklibaykus.runner.engine.EngineConstants;
 import com.biyiklibaykus.runner.engine.GameLoop;
 import com.biyiklibaykus.runner.objects.GameObject;
 
@@ -35,6 +36,8 @@ public class MVPMatrix
     private float mScreenWidth;
     private float mScreenHeight;
 
+    private Transform mT = new Transform();
+
 
     public void initialize(float width, float height)
     {
@@ -47,8 +50,8 @@ public class MVPMatrix
         //-width
         mScreenWidth = width;
         mScreenHeight = height;
-        mCamWidth = 800;
-        mCamHeight = 600;
+        mCamWidth = EngineConstants.SceneWidth;
+        mCamHeight = EngineConstants.SceneHeight;
         Matrix.orthoM(mProjectionMatrix, 0, 0, mCamWidth, 0, mCamHeight, 3, 100);
         mCameraPos = new Vector2(0,0);
 
@@ -64,7 +67,7 @@ public class MVPMatrix
 
     private void updateMVP()
     {
-        Transform t = mGameObject.mTransform;
+
 
         Matrix.setIdentityM(mTranslationMatrix, 0);
         Matrix.setIdentityM(mScaleMatrix, 0);
@@ -73,15 +76,19 @@ public class MVPMatrix
         Matrix.setIdentityM(mRotationMatrix, 0);
 
 
-
-
-
-        // Translation
+        //TODO interpolate for everything
+        //TODO seperate mvp logic
+        Transform t = mGameObject.mTransform;
+        //Interpolation
         float ratio = GameLoop.ratio;
 
         float x = mGameObject.mTransform.pos.x * (ratio) + mGameObject.mTransform.prevPos.x * (1-ratio);
         float y = mGameObject.mTransform.pos.y * (ratio) + mGameObject.mTransform.prevPos.y * (1-ratio);
+
         Util.log("x" + mGameObject.mTransform.pos.x + ", " + mGameObject.mTransform.prevPos.x);
+
+        // Translation
+
 
 //        Util.log("Layer: " + t.layer);
 

@@ -111,7 +111,7 @@ public class JumpParticleEffect
 
 
 
-        mParticleShaderProgram.setvColor(1, 0, 0);
+        mParticleShaderProgram.setvColor(0.5f, 0.5f, 0.5f);
         mParticleShaderProgram.setUniforms(mvpMatrix,passedTime);
 
 

@@ -39,6 +39,7 @@ public class Block extends GameObject
         mRunner = runner;
 
         mRectangular = new Rectangular(width,height);
+        mRectangular.setColor(1,1,1);
         mBoxCollider = new BoxCollider(pos.x,pos.y,width,height);
 
         mDimensions = dimensions;

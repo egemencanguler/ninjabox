@@ -6,5 +6,5 @@ package com.biyiklibaykus.runner.engine;
 public class EngineConstants
 {
     public static final int SceneWidth = 800;
-    public static final int SceneHeight = 600;
+    public static final int SceneHeight = 450;
 }

@@ -50,7 +50,7 @@ public class ParticleShaderProgram
 
     public void setvColor(float red, float green, float blue)
     {
-        // Set color for drawing the triangle
+        // Set color
         GLES20.glUniform4f(uColor, red, green, blue, 1.0f);
     }
 

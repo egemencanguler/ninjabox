@@ -75,12 +75,13 @@ public class GameRenderer implements GLSurfaceView.Renderer
         glClear(GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
 //        glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
-        glEnable(GLES20.GL_BLEND);
-        glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
-
-
-        glEnable(GL_BLEND);
         glEnable(GL_DEPTH_TEST);
+//        glEnable(GLES20.GL_BLEND);
+//        glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+//        glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+
+
+
 
 
         mGameLoop.loop();

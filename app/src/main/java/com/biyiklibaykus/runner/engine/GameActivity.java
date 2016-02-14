@@ -77,6 +77,7 @@ public abstract class GameActivity extends AppCompatActivity
     @Override
     public boolean onTouchEvent(MotionEvent event)
     {
+
         mGameEngine.onTouchEvent(event);
         return super.onTouchEvent(event);
     }

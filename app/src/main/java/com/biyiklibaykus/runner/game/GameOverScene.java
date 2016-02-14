@@ -27,7 +27,7 @@ public class GameOverScene extends Scene
 
 
         float centerX = EngineConstants.SceneWidth / 2;
-        float centerY = EngineConstants.SceneHeight / 2 - unit*2;
+        float centerY = EngineConstants.SceneHeight / 2 - unit*8;
 
 
         mHighScore = new TextureButton(centerX,centerY + unit * 10,unit*10,unit*5,R.drawable.score);

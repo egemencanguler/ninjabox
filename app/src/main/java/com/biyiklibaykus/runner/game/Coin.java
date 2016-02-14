@@ -36,6 +36,28 @@ public class Coin extends GameObject
 
     }
 
+    private boolean flip = true;
+    private void flip(float delta)
+    {
+
+        if(flip)
+        {
+            mTransform.scale.x -= delta * 0.5f;
+            if (mTransform.scale.x <= 0)
+            {
+                mTransform.scale.x = 0.1f;
+                flip = false;
+            }
+        }else
+        {
+            mTransform.scale.x += delta * 0.5f;
+            if (mTransform.scale.x >= 1)
+            {
+                mTransform.scale.x = 0.9f;
+                flip = true;
+            }
+        }
+    }
     @Override
     public void update(float delta)
     {
@@ -45,6 +67,11 @@ public class Coin extends GameObject
         {
             mCallback.onCollision(this);
         }
+        flip(delta);
+
+        // prevent from interpolation.
+        mTransform.prevPos.x = mTransform.pos.x;
+        mTransform.prevPos.y = mTransform.pos.y;
 
     }
 

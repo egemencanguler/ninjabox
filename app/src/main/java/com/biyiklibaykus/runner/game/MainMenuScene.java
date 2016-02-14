@@ -37,7 +37,7 @@ public class MainMenuScene extends Scene
 //
         float unit = 800/60;
         float centerX = 800 / 2;
-        float centerY = 600 / 2 - 2*unit;
+        float centerY = 600 / 2 - 5 * unit;
 
 
         mHighScore = new TextureButton(centerX,centerY + unit * 10,unit*20,unit*5,R.drawable.highscore);

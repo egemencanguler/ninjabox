@@ -6,6 +6,8 @@ package com.biyiklibaykus.runner.components;
 public class Transform
 {
     //TODO prev pos look again
+    //TODo rewrite this class remove public members its too hard to make changes
+    //TODO add copy compare functions
     public Vector2 prevPos;
     public Vector2 pos;
     public float rot;
@@ -19,4 +21,6 @@ public class Transform
         scale = new Vector2(1,1);
         layer = 5;
     }
+
+
 }

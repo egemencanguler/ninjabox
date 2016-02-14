@@ -39,13 +39,14 @@ public class RunnerScene extends Scene
 
 
 
+
         mRunner = new Runner(EngineConstants.SceneWidth / 2, EngineConstants.SceneHeight / 2, dimensions);
 //        mRunner.setLayer(20);
         addGameObject(mRunner);
 
-        mBackground = new Background(dimensions);
-        mBackground.setLayer(10);
-        addGameObject(mBackground);
+
+
+
 
 
 
@@ -61,6 +62,9 @@ public class RunnerScene extends Scene
         Directions.setGravityDir(Directions.DIR_DOWN);
         Util.log("INIT");
 
+        mBackground = new Background(dimensions);
+        mBackground.setLayer(10);
+        addGameObject(mBackground);
 
 
 
@@ -94,8 +98,8 @@ public class RunnerScene extends Scene
 
     public void gameOver()
     {
-        //TODO reactivate game over
-        //getGameEngine().setScene(new GameOverScene(getGameEngine(),mBlockGenerator.getLevel()));
+
+        getGameEngine().setScene(new GameOverScene(getGameEngine(),mBlockGenerator.getLevel()));
 
     }
 

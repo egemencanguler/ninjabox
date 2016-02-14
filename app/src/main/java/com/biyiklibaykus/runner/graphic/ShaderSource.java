@@ -54,7 +54,8 @@ public class ShaderSource
 //                     "float gravityFactor = v_ElapsedTime * v_ElapsedTime * 0.98;"+
 //                     "currentPosition.y -= gravityFactor;"+
                      "gl_Position = uMVPMatrix * vec4(currentPosition, 1.0);"+
-                     "gl_PointSize = 5.0;"+
+                     "gl_PointSize = 1.0 / v_ElapsedTime;"+
+                    "if(v_ElapsedTime < 0.2) gl_PointSize = 5.0;"+
                     "}";
 
     public static final String particleFragmentShader =
@@ -62,11 +63,10 @@ public class ShaderSource
                     "varying float v_ElapsedTime;" +
                     "uniform vec4 uColor;" +
                     "void main() {" +
-//                    "if (v_ElapsedTime > 0.5) {" +
-//                    "discard;"+
-//                    "}"+
+//                    "if(v_ElapsedTime > 0.2) discard;"+
+//                    "uColor.a = 1 - vElapsedTime;"+
                     "vec4 color = uColor;"+
-                    "color.w = 0.2;"+
+                    "color.w = 0.9;"+
                     "gl_FragColor = color;" +
                     "}";
 
@@ -95,7 +95,9 @@ public class ShaderSource
 
             "void main()"+
             "{"+
-                "gl_FragColor = texture2D(u_TextureUnit, v_TextureCoordinates);"+
+                "vec4 texel = texture2D(u_TextureUnit, v_TextureCoordinates);"+
+                "if(texel.a < 0.2) discard;" +
+                "gl_FragColor = texel;"+
             "}";
 
 
